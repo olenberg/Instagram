@@ -436,7 +436,11 @@ textarea {
 	opacity: 1
 }
 
-.item__top .item__bookmark-btn {
+.item__bookmark-icon {
+	cursor: pointer;
+}
+
+.item__top .btn {
 	margin-top: 5px
 }
 

@@ -3,6 +3,7 @@ from index.views import index_blueprint
 from post.views import post_blueprint
 from search.views import search_blueprint
 from user_feed.views import user_feed_blueprint
+from bookmarks.views import bookmarks_blueprint
 from tag.views import tag_blueprint
 from utils import load_posts, get_post_by_pk
 import logging
@@ -21,6 +22,7 @@ app.register_blueprint(post_blueprint)
 app.register_blueprint(search_blueprint)
 app.register_blueprint(user_feed_blueprint)
 app.register_blueprint(tag_blueprint)
+app.register_blueprint(bookmarks_blueprint)
 
 
 @app.errorhandler(404)

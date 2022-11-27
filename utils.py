@@ -61,3 +61,30 @@ def get_posts_by_tag(tag):
         if tag in post.get('tag'):
             posts_with_tag.append(post)
     return posts_with_tag
+
+
+def load_bookmarks():
+    with open('data/bookmarks.json', 'r', encoding='utf-8') as file:
+        bookmarks = json.load(file)
+        return bookmarks
+
+
+def add_bookmark(post_id):
+    bookmarks = load_bookmarks()
+    post = get_post_by_pk(post_id)
+    bookmarks.append(post)
+    save_bookmarks(bookmarks)
+
+
+def save_bookmarks(bookmarks):
+    with open('data/bookmarks.json', 'w', encoding='utf-8') as file:
+        json.dump(bookmarks, file, ensure_ascii=False)
+
+
+def delete_bookmark(bookmark_id):
+    bookmarks = load_bookmarks()
+    for index, bookmark in enumerate(bookmarks):
+        if bookmark.get('pk') == bookmark_id:
+            del bookmarks[index]
+            break
+    save_bookmarks(bookmarks)
